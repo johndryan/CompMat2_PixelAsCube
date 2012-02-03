@@ -5,7 +5,7 @@ int pixelWidth = 18;
 
 void setup() {
   size (400,400);
-  frameRate(5);
+  frameRate(15);
   
   loadPix();
 }
@@ -18,7 +18,9 @@ void draw() {
       rowOffset = 9;
     }
     for (int currentCol = 0; currentCol < ((width)/pixelWidth*1.1); currentCol++) {
-      image(images[currentframe], (currentCol*pixelWidth)-(pixelWidth/2)-rowOffset, (currentRow*(pixelHeight-5))-(pixelHeight/2));
+      int spriteFrame = currentframe + (images.length % (currentCol+1));
+      if (spriteFrame >= images.length) spriteFrame -= images.length;
+      image(images[spriteFrame], (currentCol*pixelWidth)-(pixelWidth/2)-rowOffset, (currentRow*(pixelHeight-5))-(pixelHeight/2));
     }
   }
   currentframe++;
