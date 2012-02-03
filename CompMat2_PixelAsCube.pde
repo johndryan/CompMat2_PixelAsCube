@@ -5,20 +5,20 @@ int pixelWidth = 18;
 
 void setup() {
   size (400,400);
-  frameRate(15);
+  frameRate(5);
   
   loadPix();
 }
 
 void draw() {
   background(0, 0, 0);
-  for (int currentRow = 0; currentRow < ((height+pixelHeight)/pixelHeight); currentRow++) {
+  for (int currentRow = 0; currentRow < ((height)/pixelHeight*1.36); currentRow++) {
     int rowOffset = 0;
     if (currentRow % 2 == 1) {
       rowOffset = 9;
     }
-    for (int currentCol = 0; currentCol < ((width+pixelWidth)/pixelWidth); currentCol++) {
-      image(images[currentframe], (currentCol*pixelWidth)-(pixelWidth/2)-rowOffset, (currentRow*pixelHeight)-(pixelHeight/2));
+    for (int currentCol = 0; currentCol < ((width)/pixelWidth*1.1); currentCol++) {
+      image(images[currentframe], (currentCol*pixelWidth)-(pixelWidth/2)-rowOffset, (currentRow*(pixelHeight-5))-(pixelHeight/2));
     }
   }
   currentframe++;
