@@ -18,7 +18,8 @@ void draw() {
       rowOffset = 9;
     }
     for (int currentCol = 0; currentCol < ((width)/pixelWidth*1.1); currentCol++) {
-      int spriteFrame = currentframe + (currentCol % images.length) + (currentRow % images.length);
+      int spriteFrame = currentframe + (currentCol % images.length) + int(sin(currentRow)*3);
+      if (spriteFrame < 0) spriteFrame += images.length;
       if (spriteFrame >= images.length) spriteFrame = (spriteFrame % images.length);
       image(images[spriteFrame], (currentCol*pixelWidth)-(pixelWidth/2)-rowOffset, (currentRow*(pixelHeight-5))-(pixelHeight/2));
     }
