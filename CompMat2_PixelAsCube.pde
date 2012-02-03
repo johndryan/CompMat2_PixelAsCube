@@ -11,15 +11,15 @@ void setup() {
 }
 
 void draw() {
-  background(0, 0, 0);
+  background(163, 120, 196);
   for (int currentRow = 0; currentRow < ((height)/pixelHeight*1.36); currentRow++) {
     int rowOffset = 0;
     if (currentRow % 2 == 1) {
       rowOffset = 9;
     }
     for (int currentCol = 0; currentCol < ((width)/pixelWidth*1.1); currentCol++) {
-      int spriteFrame = currentframe + (images.length % (currentCol+1));
-      if (spriteFrame >= images.length) spriteFrame -= images.length;
+      int spriteFrame = currentframe + (currentCol % images.length) + (currentRow % images.length);
+      if (spriteFrame >= images.length) spriteFrame = (spriteFrame % images.length);
       image(images[spriteFrame], (currentCol*pixelWidth)-(pixelWidth/2)-rowOffset, (currentRow*(pixelHeight-5))-(pixelHeight/2));
     }
   }
