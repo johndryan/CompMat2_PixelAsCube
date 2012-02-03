@@ -2,6 +2,7 @@ PImage[] images;
 int currentframe = 0;
 int pixelHeight = 20;
 int pixelWidth = 18;
+int numOfFiles = 0;
 
 void setup() {
   size (400,400);
@@ -18,7 +19,7 @@ void draw() {
       rowOffset = 9;
     }
     for (int currentCol = 0; currentCol < ((width)/pixelWidth*1.1); currentCol++) {
-      int spriteFrame = currentframe + (currentCol % images.length) + int(sin(currentRow)*3);
+      int spriteFrame = currentframe + (currentCol % images.length) + int(sin(currentRow + currentframe)*2);
       if (spriteFrame < 0) spriteFrame += images.length;
       if (spriteFrame >= images.length) spriteFrame = (spriteFrame % images.length);
       image(images[spriteFrame], (currentCol*pixelWidth)-(pixelWidth/2)-rowOffset, (currentRow*(pixelHeight-5))-(pixelHeight/2));
